@@ -1,4 +1,6 @@
 //jshint esversion:6
+require('dotenv').config();
+
 
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -19,7 +21,7 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-mongoose.connect("mongodb+srv://admin-chenyu:test123@cluster0.nyslq.mongodb.net/blogDB?retryWrites=true&w=majority");
+mongoose.connect(process.env.ADDRESS);
 
 const postSchema = {
   title: String,
